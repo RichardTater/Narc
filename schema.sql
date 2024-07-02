@@ -1,27 +1,27 @@
-CREATE TABLE IF NOT EXISTS `Offender` (
-	`Offender_ID` integer primary key NOT NULL UNIQUE,
-	`Plate_Number` TEXT NOT NULL,
-	`Plate_State` TEXT NOT NULL,
-	`Make` TEXT NOT NULL,
-	`Model` TEXT NOT NULL,
-	`Color` TEXT NOT NULL
+CREATE TABLE IF NOT EXISTS `offender` (
+	`id` integer primary key NOT NULL UNIQUE,
+	`plate_number` TEXT NOT NULL,
+	`plate_state` TEXT NOT NULL,
+	`make` TEXT NOT NULL,
+	`model` TEXT NOT NULL,
+	`color` TEXT NOT NULL
 );
-CREATE TABLE IF NOT EXISTS `Narc` (
-	`Narc_ID` integer primary key NOT NULL UNIQUE,
-	`Narc_Email` TEXT NOT NULL,
-	`Narc_First_Name` TEXT NOT NULL,
-	`Narc_Last_Name` TEXT NOT NULL,
-	`MVP_Password` TEXT NOT NULL
+CREATE TABLE IF NOT EXISTS `narc` (
+	`id` integer primary key NOT NULL UNIQUE,
+	`email` TEXT NOT NULL,
+	`first_name` TEXT NOT NULL,
+	`last_name` TEXT NOT NULL,
+	`password` TEXT NOT NULL
 );
-CREATE TABLE IF NOT EXISTS `Offences` (
-	`Offence_ID` integer primary key NOT NULL UNIQUE,
-	`Narc_ID` INTEGER NOT NULL,
-	`Offender_ID` INTEGER NOT NULL,
-	`Date_Of_Offense` TEXT NOT NULL,
-	`Time_Of_Offence` TEXT NOT NULL,
-	`State_Of_Offence` TEXT NOT NULL,
-	`City_Of_Offence` TEXT NOT NULL,
-	`Offence_Note` TEXT NOT NULL,
-FOREIGN KEY(`Narc_ID`) REFERENCES `Narc`(`Narc_ID`),
-FOREIGN KEY(`Offender_ID`) REFERENCES `Offender`(`Offender_ID`)
+CREATE TABLE IF NOT EXISTS `offences` (
+	`id` integer primary key NOT NULL UNIQUE,
+	`narc_id` INTEGER NOT NULL,
+	`offender_id` INTEGER NOT NULL,
+	`date` TEXT NOT NULL,
+	`time` TEXT NOT NULL,
+	`state` TEXT NOT NULL,
+	`city` TEXT NOT NULL,
+	`note` TEXT NOT NULL,
+FOREIGN KEY(`narc_id`) REFERENCES `narc`(`id`),
+FOREIGN KEY(`offender_id`) REFERENCES `offender`(`id`)
 );
