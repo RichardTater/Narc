@@ -13,7 +13,7 @@ CREATE TABLE IF NOT EXISTS `narc` (
 	`last_name` TEXT NOT NULL,
 	`password` TEXT NOT NULL
 );
-CREATE TABLE IF NOT EXISTS `offences` (
+CREATE TABLE IF NOT EXISTS `offence` (
 	`id` integer primary key NOT NULL UNIQUE,
 	`narc_id` INTEGER NOT NULL,
 	`offender_id` INTEGER NOT NULL,
